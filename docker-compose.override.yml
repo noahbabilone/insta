@@ -1,0 +1,1 @@
+version:  '3.7'services:  mysql:    container_name: insta_mysql    ports:      - "3306:3306"  php:    container_name: insta_php    ports:      - "8000:80"
