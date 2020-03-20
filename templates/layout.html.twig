@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+{% block body_id 'main' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('build/css/main.css') }}">
+{% endblock %}
+
+{% block header %}
+    {#{% set routeName = app.request.get('_route') %}#}
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">InstaDEV</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+                    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+
+                </ul>
+                <form class="form-inline my-2 my-md-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        {% block alert %}
+            <section>
+                {% for key, flashs in app.session.flashBag.all %}
+                    {% for flash in flashs %}
+                        <div class="alert alert-{{ key }}">{{ flash|raw }}</div>
+                    {% endfor %}
+                {% endfor %}
+            </section>
+        {% endblock %}
+        {% block body_app %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block footer %}
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <hr>
+            <p>Copyright &copy; YS - {{ "now"|date("Y") }} </p>
+        </div>
+    </footer>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {#<script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>#}
+    {#<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>#}
+    {#<script src="{{ asset('build/js/main.js') }}"></script>#}
+{% endblock %}
