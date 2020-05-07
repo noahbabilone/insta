@@ -1,6 +1,13 @@
+// import
+@import "import/variables";
+@import "import/mixins";
 
-/** Body **/
 .container {
-    width: 90%;
-    position: relative;
+  width: 90%;
+  position: relative;
+}
+
+.bg-light-border {
+  background-color: $theme-colors;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
